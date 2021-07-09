@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//we added a customer class with the idea of storing customer object and object details into database
-//however after further testing we decided not to go ahead with the database as we wanted the observer pattern to be simple and easy to understand
 namespace HotelBMG2
 {
     public class Customer
