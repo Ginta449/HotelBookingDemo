@@ -16,7 +16,7 @@ namespace HotelBMG2
 {
     public partial class CustomerDetails : Form 
     {
-        int counter = 0;//counter declared to calculate number of nights added by user
+        int counter = 0;
         public static string name = "";
         public static string surname = "";
         public static string address = "";
@@ -26,25 +26,23 @@ namespace HotelBMG2
 
         HotelAdminNotifications bookings = new HotelAdminNotifications();
 
-        Regex validation = new Regex("[a-zA-Z0-9]");//adding basic regular expression that accepts all letters and all numbers to avoid user from crashing the application
+        Regex validation = new Regex("[a-zA-Z0-9]");
         public CustomerDetails()
         {
             InitializeComponent();
-           // booking = new Rooms();
-           
-            //booking.RegisterObserver(bookings);
+         
         }
 
         private void CustomerDetails_Load(object sender, EventArgs e)
         {
-            string totalPrice = RoomBuilder.total;//getting the price from label using the public static string in room builder form
+            string totalPrice = RoomBuilder.total;
             lblDisplayTotal.Text = totalPrice.ToString();
             txtNoOfNights.Text = "1";          
 
         }
 
        
-        public void SendEmail(string email)//this method sends email to user to notify the user that the booking has been made
+        public void SendEmail(string email)
         {
             email = txtEmail.Text;
 
@@ -88,12 +86,11 @@ namespace HotelBMG2
             phone = txtPhone.Text;
 
             if (validation.IsMatch(name) && validation.IsMatch(surname) && validation.IsMatch(address) && validation.IsMatch(email) && validation.IsMatch(phone))
-            {//calling regex object is match method to validate the form
+            {
                
                 Customer cust = new Customer(txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtEmail.Text, txtPhone.Text);
                 SendEmail(txtEmail.Text);
-                // booking.LoadForm(cust);
-                //bookings.Show(); 
+                
 
                 MessageBox.Show("Your order has been received, please see your email for order details!");
 
@@ -118,22 +115,21 @@ namespace HotelBMG2
        
         private void btnAddNights_Click(object sender, EventArgs e)
         {
-            counter++;//adds days
+            counter++;
             txtNoOfNights.Text = counter.ToString();
-            //at the beginning we used the lblDisplayTotal to get the price and multiply by counter however if the price hit 0 or any other changes were made
-            //the values were not correct
-            string totalPrice = RoomBuilder.total;//therefore we retrieved the original value from room builder form
-            lblDisplayTotal.Text = (Double.Parse(totalPrice) * counter).ToString();//and multiplied it by counter(nights) to ensure values were correct
+     
+            string totalPrice = RoomBuilder.total;
+            lblDisplayTotal.Text = (Double.Parse(totalPrice) * counter).ToString();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            counter--;//removes days
+            counter--;
             string totalPrice = RoomBuilder.total;
 
-            if (counter == -1)//after testing we realized that the counter went into minuses
+            if (counter == -1)
             {
-                counter = 0;//therefore we told the program to reset counter to 0 if counter reached -1
+                counter = 0;
                 lblDisplayTotal.Text = totalPrice.ToString();
             }
 
