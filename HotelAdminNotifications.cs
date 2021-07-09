@@ -13,14 +13,11 @@ namespace HotelBMG2
 {
     public partial class HotelAdminNotifications : Form
     {
-        
-        //private readonly Customer _customer;
+       
         public HotelAdminNotifications()
         {
            
             InitializeComponent();
-            
-            //_customer = customer;
            
         }
 
@@ -35,7 +32,6 @@ namespace HotelBMG2
 
             dataGridView1.Rows.Add("customer:" + count.ToString(), name, surname,address, email, phone); ;
               
-            //lstCustomerBookings.Items.Add("Customer:" + count.ToString() + " " + name + " " + surname + " " + email + " " + address + " " + phone);
         }
 
         public void Update(int count)
@@ -49,14 +45,5 @@ namespace HotelBMG2
 
         }
 
-        private void lstCustomerBookings_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
