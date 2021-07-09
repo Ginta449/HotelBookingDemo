@@ -28,14 +28,14 @@ namespace HotelBMG2
             SendPromo();
         }
 
-        public void SendPromo()//create amethod which can be called into button click
+        public void SendPromo()
         {
             Subject promocode = new Subject(" ", DateTime.Now);
-            Observer user = new Observer("youremail@email.com", promocode);//because button click is private we needed to add public method
-            //and call it in private button click to retrieve the information from observer
+            Observer user = new Observer("youremail@email.com", promocode);
+            
 
             promodeal = richTextBoxPromoDeals.Text;
-            user.update(promodeal);//as the promo deal gets added update methid gets called from observer class which then sends emails to users saved in array of any updates
+            user.update(promodeal);
 
         }
 
