@@ -7,9 +7,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-//we were struggling for a while to find a way to implement observer pattern into realistic and effiecient manner
-//after a while we were able to add usersname(email) as our observer and once promotional deal is posted all the users in database (represented by hard codes array)
-//receive an email of the new promotion posted by hotel
+
 namespace HotelBMG2
 {
     class Observer : IObserver
@@ -22,7 +20,7 @@ namespace HotelBMG2
         public Observer(string userName, ISubject subject)
         {
             UserName = userName;
-            subject.RegisterObserver(this);//registering the observer / username are the observers email
+            subject.RegisterObserver(this);
         }
 
         public Observer(string v, Subject promocode)
@@ -33,9 +31,9 @@ namespace HotelBMG2
 
         public void update(string promocode)
         {
-            //basically saying if new promocode is postede regster and update the observers in the array (username)
-            string[] email = { "customeremail@email.com"};//we added user emails into array manually
-            //to test ensure to put in your own emails. This array is a representation of how the email could be sent if the user emails were saved into a database
+            
+            string[] email = { "customeremail@email.com"};
+           
 
             for (int i = 0; i < email.Length; i++)
             {
