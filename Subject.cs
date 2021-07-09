@@ -9,8 +9,8 @@ namespace HotelBMG2
 {
     public class Subject
     {
-        private List<IObserver> observers = new List<IObserver>();//adding new list of observers
-        private string PromoCode { get; set; }//declareing variables
+        private List<IObserver> observers = new List<IObserver>();
+        private string PromoCode { get; set; }
         private DateTime expDate { get; set; }
 
         public Subject(string code, DateTime expires)
@@ -28,7 +28,7 @@ namespace HotelBMG2
         {
             this.PromoCode = promo;
 
-            NotifyObservers();//adding set promocode methid which notifies the observer of any promo changes
+            NotifyObservers();
         }
 
         public void RegisterObserver(IObserver observer)
