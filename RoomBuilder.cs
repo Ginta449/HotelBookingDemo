@@ -14,7 +14,7 @@ namespace HotelBMG2
 {
     public partial class RoomBuilder : Form
     {
-        public static string total = "";//declaring public static string at a class level to be able to retrieve the information from one form into another
+        public static string total = "";
 
         public RoomBuilder()
         {
@@ -25,8 +25,8 @@ namespace HotelBMG2
 
         private void radioButtonStandard_CheckedChanged(object sender, EventArgs e)
         {
-            checkBoxBreakfast.Checked = false;//because for each checkbox and radio button we are using decorator pattern
-            checkBoxDinner.Checked = false;//some validation needed to be put in place to make sure that the values are displayed correctly
+            checkBoxBreakfast.Checked = false;
+            checkBoxDinner.Checked = false;
             
             _room = new StandardRoom();
             DisplayPrice();
@@ -36,7 +36,7 @@ namespace HotelBMG2
 
         private void radioButtonDeluxe_CheckedChanged(object sender, EventArgs e)
         {
-            _room = new DeluxeRoom(_room);//calls the decorator class of deluxe room
+            _room = new DeluxeRoom(_room);
             DisplayPrice();
             checkBoxBreakfast.Enabled = false;
             checkBoxDinner.Enabled = false;
@@ -46,12 +46,12 @@ namespace HotelBMG2
         {
             if (checkBoxBreakfast.Checked)
             {
-                _room = new AddBreakfast(_room);//decorator
+                _room = new AddBreakfast(_room);
                 DisplayPrice();
             }
             else if (checkBoxBreakfast.Checked == false)
             {
-                _room = new RemoveBreakfast(_room);//decorator
+                _room = new RemoveBreakfast(_room);
                 DisplayPrice();
             }
         }
@@ -60,12 +60,12 @@ namespace HotelBMG2
         {
             if (checkBoxDinner.Checked)
             {
-                _room = new AddDinner(_room);//decorator
+                _room = new AddDinner(_room);
                 DisplayPrice();
             }
             else if (checkBoxDinner.Checked == false)
             {
-                _room = new RemoveDinner(_room);//decorator
+                _room = new RemoveDinner(_room);
                 DisplayPrice();
             }
         }
@@ -73,7 +73,7 @@ namespace HotelBMG2
         public void DisplayPrice()
         {
             
-            lblTotalPrice.Text = _room.getPrice().ToString();//displays the original price
+            lblTotalPrice.Text = _room.getPrice().ToString();
         }
 
         private void btnReserve_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace HotelBMG2
             {
                 total = lblTotalPrice.Text;
                 CustomerDetails customerDetails = new CustomerDetails();
-                customerDetails.Show();//opens the customer detail form
+                customerDetails.Show();
 
             }
             else
@@ -96,7 +96,7 @@ namespace HotelBMG2
 
         private void RoomBuilder_Load(object sender, EventArgs e)
         {
-            radioButtonStandard.Checked = true;//to ensure users are not able to crash the program or get the wrong values we set the standard radio button to selected
+            radioButtonStandard.Checked = true;
         }
     }
 }
